@@ -1,122 +1,122 @@
 # Kepler.gl Project
 
-## Overview
+This project demonstrates the use of Kepler.gl for interactive geospatial data visualization, with custom component integration.
 
-This project is a React-based application integrating Kepler.gl, an advanced open-source tool for geospatial data analysis. It showcases how to use Kepler.gl for visualizing geospatial data, including custom component integration.
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Custom Component Integration](#custom-component-integration)
+- [Issues and Solutions](#issues-and-solutions)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Features
+## Installation
 
-- **Kepler.gl Integration**: Interactive visualization and analysis of geospatial data.
-- **Custom Components**: Extendable UI with custom components integrated into Kepler.gl.
-- **Responsive Design**: Adapts to various screen sizes.
+1. Clone the repository:
+   ```
+   git clone https://github.com/rubaiyat2009/kepler_gl_project.git
+   ```
 
-## Prerequisites
-
-Ensure you have the following installed:
-
-- Node.js (version 12.x or later)
-- npm (Node Package Manager) or yarn
-
-## Setup and Installation
-
-To set up and run the project, follow these steps:
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone git remote add origin https://github.com/rubaiyat2009/kepler_gl_project.git
+2. Navigate to the project directory:
+   ```
    cd kepler_gl_project
    ```
 
-2. **Install Dependencies:**
-
-   Using npm:
-
-   ```bash
+3. Install dependencies:
+   ```
    npm install
    ```
 
-   Or with yarn:
+   or
 
-   ```bash
+   ```
    yarn install
    ```
 
-3. **Set Up Environment Variables:**
+## Usage
 
-   Obtain a Mapbox API token. Create a `.env` file in the root directory and include your token:
-
-   ```env
-   REACT_APP_MAPBOX_API_TOKEN=your_actual_mapbox_token
+1. Start the development server:
    ```
-
-   Replace `your_actual_mapbox_token` with your actual Mapbox token.
-
-4. **Start the Development Server:**
-
-   Using npm:
-
-   ```bash
    npm start
    ```
 
-   Or with yarn:
+   or
 
-   ```bash
+   ```
    yarn start
    ```
 
-   The application will be available at `http://localhost:3000`.
+2. Open your browser and navigate to `http://localhost:3000` to see the Kepler.gl map with the integrated custom component.
 
-## Project Structure
+## Custom Component Integration
 
+In this project, we replaced the default side panel of Kepler.gl with a custom component called `CustomSidePanel`. This component communicates with the parent component to pass data or trigger actions.
+
+### Parent Component
+
+The parent component includes the KeplerGl map and the custom side panel:
+
+```javascript
+import React from 'react';
+import KeplerGl from 'kepler.gl';
+import CustomSidePanel from './CustomSidePanel';
+
+const ParentComponent = () => {
+  const handleCustomAction = (data) => {
+    console.log('Data from custom component:', data);
+  };
+
+  return (
+    <KeplerGl
+      id="map"
+      mapboxApiAccessToken="YOUR_ACTUAL_MAPBOX_TOKEN"
+      width={window.innerWidth}
+      height={window.innerHeight}
+      sidePanel={<CustomSidePanel onCustomAction={handleCustomAction} />}
+    />
+  );
+};
+
+export default ParentComponent;
 ```
-kepler_gl_project/
-│
-├── public/
-│   ├── index.html
-│   ├── favicon.ico
-│   └── manifest.json
-│
-├── src/
-│   ├── components/
-│   │   ├── CustomSidePanel.js
-│   │   └── ... (other components)
-│   │
-│   ├── App.js
-│   ├── index.js
-│   ├── ParentComponent.js
-│   ├── App.css
-│   ├── index.css
-│   └── ... (other styles or utilities)
-│
-├── .gitignore
-├── package.json
-├── README.md
-└── yarn.lock / package-lock.json
+
+### Custom Component (CustomSidePanel)
+
+The custom component receives a function prop from the parent and uses it to send data back:
+
+```javascript
+import React from 'react';
+
+const CustomSidePanel = ({ onCustomAction }) => {
+  const sendDataToParent = () => {
+    const data = { message: 'Hello from CustomSidePanel' };
+    onCustomAction(data);
+  };
+
+  return (
+    <div>
+      <button onClick={sendDataToParent}>Send Data</button>
+    </div>
+  );
+};
+
+export default CustomSidePanel;
 ```
 
-- **public/**: Contains the main HTML file and static assets.
-- **src/**: Main directory for source files, including React components and styles.
-  - **components/**: Directory for custom React components.
-  - **App.js**: Main application component.
-  - **index.js**: Entry point for the React application.
-  - **ParentComponent.js**: Component that integrates Kepler.gl.
-  - **styles**: CSS files for styling the application.
+## Issues and Solutions
 
-## Usage
+### Problem with `injectComponents`
 
-To utilize the Kepler.gl map, ensure your Mapbox token is correctly set in the `.env` file. This will enable the map to render with the provided data and custom components.
+Initially, there was an attempt to use the `injectComponents()` function from `kepler.gl` to replace components. However, due to the absence of this function in the version used, the project has been modified to directly include custom components without `injectComponents()`.
+
+### Import Errors
+
+Ensure you have installed the `kepler.gl` package correctly. If you encounter module resolution errors, reinstall the package and check for correct versions.
 
 ## Contributing
 
-Contributions are welcome! Feel free to fork the project, submit issues, and send pull requests. For significant changes, please open an issue to discuss them first.
+If you would like to contribute to this project, please fork the repository and submit a pull request. We welcome all contributions!
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more information.
-
-## Acknowledgements
-
-- [Kepler.gl](https://kepler.gl/) - The open-source tool for geospatial data analysis.
-- [Mapbox](https://www.mapbox.com/) - Provider of mapping and location services used in this project.
+This project is licensed under the MIT License. See the LICENSE file for more information.
