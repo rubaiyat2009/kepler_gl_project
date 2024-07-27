@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# Kepler.gl Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a React-based application integrating Kepler.gl, an advanced open-source tool for geospatial data analysis. It showcases how to use Kepler.gl for visualizing geospatial data, including custom component integration.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Kepler.gl Integration**: Interactive visualization and analysis of geospatial data.
+- **Custom Components**: Extendable UI with custom components integrated into Kepler.gl.
+- **Responsive Design**: Adapts to various screen sizes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ensure you have the following installed:
 
-### `npm test`
+- Node.js (version 12.x or later)
+- npm (Node Package Manager) or yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup and Installation
 
-### `npm run build`
+To set up and run the project, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/yourusername/kepler_gl_project.git
+   cd kepler_gl_project
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies:**
 
-### `npm run eject`
+   Using npm:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   Or with yarn:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   yarn install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Set Up Environment Variables:**
 
-## Learn More
+   Obtain a Mapbox API token. Create a `.env` file in the root directory and include your token:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```env
+   REACT_APP_MAPBOX_API_TOKEN=your_actual_mapbox_token
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Replace `your_actual_mapbox_token` with your actual Mapbox token.
 
-### Code Splitting
+4. **Start the Development Server:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Using npm:
 
-### Analyzing the Bundle Size
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   Or with yarn:
 
-### Making a Progressive Web App
+   ```bash
+   yarn start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   The application will be available at `http://localhost:3000`.
 
-### Advanced Configuration
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+kepler_gl_project/
+│
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── manifest.json
+│
+├── src/
+│   ├── components/
+│   │   ├── CustomSidePanel.js
+│   │   └── ... (other components)
+│   │
+│   ├── App.js
+│   ├── index.js
+│   ├── ParentComponent.js
+│   ├── App.css
+│   ├── index.css
+│   └── ... (other styles or utilities)
+│
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock / package-lock.json
+```
 
-### Deployment
+- **public/**: Contains the main HTML file and static assets.
+- **src/**: Main directory for source files, including React components and styles.
+  - **components/**: Directory for custom React components.
+  - **App.js**: Main application component.
+  - **index.js**: Entry point for the React application.
+  - **ParentComponent.js**: Component that integrates Kepler.gl.
+  - **styles**: CSS files for styling the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+To utilize the Kepler.gl map, ensure your Mapbox token is correctly set in the `.env` file. This will enable the map to render with the provided data and custom components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+
+Contributions are welcome! Feel free to fork the project, submit issues, and send pull requests. For significant changes, please open an issue to discuss them first.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more information.
+
+## Acknowledgements
+
+- [Kepler.gl](https://kepler.gl/) - The open-source tool for geospatial data analysis.
+- [Mapbox](https://www.mapbox.com/) - Provider of mapping and location services used in this project.
