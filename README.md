@@ -24,7 +24,7 @@ To set up and run the project, follow these steps:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/kepler_gl_project.git
+   git clone git remote add origin https://github.com/rubaiyat2009/kepler_gl_project.git
    cd kepler_gl_project
    ```
 
